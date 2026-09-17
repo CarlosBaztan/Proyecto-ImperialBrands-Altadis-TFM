@@ -15,7 +15,7 @@ Documento TFM: [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeir
 
 ## Autoría
 
-Trabajo Fin de Máster grupal (2 integrantes), dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte del portfolio personal de **Carlos Baztán Peiró**.
+Trabajo Fin de Máster, dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte de mi portfolio personal, **Carlos Baztán Peiró**.
 
 ## Contexto
 
