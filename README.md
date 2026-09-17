@@ -13,7 +13,8 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — Imperial Brands Gro
 
 ## Autoría
 
-Trabajo Fin de Máster (Business Intelligence), dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte del portfolio personal de **Carlos Baztán Peiró**.
+Trabajo Fin de Máster (Business Intelligence), dirigido por Enrique Hortalá González. 
+Este repositorio recoge y documenta la parte técnica del proyecto | modelado de datos, SQL, notebooks de Python y dashboard de Power BI | como parte del portfolio personal de **Carlos Baztán Peiró**.
 
 ## Contexto
 
