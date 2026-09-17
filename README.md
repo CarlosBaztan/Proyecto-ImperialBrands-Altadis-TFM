@@ -11,6 +11,8 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — **Imperial Brands G
 ![XGBoost](https://img.shields.io/badge/XGBoost-006400?style=flat)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
 
+TFM_Final_CarlosBaztánPeiró.pdf
+
 ## Autoría
 
 Trabajo Fin de Máster, dirigido por Enrique Hortalá González. 
