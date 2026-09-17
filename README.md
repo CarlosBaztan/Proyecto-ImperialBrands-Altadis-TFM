@@ -212,4 +212,4 @@ Clasificación binaria (Regresión Logística, Árbol de Decisión, XGBoost) sob
 
 ## Memoria completa
 
-El documento [`docs/TFM_Memoria.pdf`](docs/TFM_Memoria.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
+El documento [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
