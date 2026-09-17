@@ -11,12 +11,9 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — **Imperial Brands G
 ![XGBoost](https://img.shields.io/badge/XGBoost-006400?style=flat)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
 
-[`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf)
-
 ## Autoría
 
-Trabajo Fin de Máster, dirigido por Enrique Hortalá González. 
-Este repositorio recoge y documenta la parte técnica del proyecto | modelado de datos, SQL, notebooks de Python y dashboard de Power BI | como parte del portfolio personal de **Carlos Baztán Peiró**.
+Trabajo Fin de Máster grupal (2 integrantes), dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte del portfolio personal de **Carlos Baztán Peiró**.
 
 ## Contexto
 
@@ -31,9 +28,9 @@ El sector tabacalero español opera bajo presión regulatoria creciente, cambios
 
 ## Arquitectura de datos
 
-Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: 6 ficheros de Altadis (~2,1M registros, en [`data/raw/`](data/raw/)) enriquecidos con provincia y renta media neta por persona por provincia (INE, a partir del código postal) y calendario de festivos por CCAA (BOE), materializados en un esquema en estrella sobre SQL Server.
+Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: ficheros operacionales de Altadis (en [`Excel - csv/`](Excel%20-%20csv/)) enriquecidos con provincia y renta media neta por persona por provincia (INE, a partir del código postal) y calendario de festivos por CCAA (BOE), materializados en un esquema en estrella sobre SQL Server.
 
-![Esquema en estrella del Data Warehouse](assets/figures/esquema_estrella_dwh.png)
+![Esquema en estrella del Data Warehouse](Assets/figures/esquema_estrella_dwh.png)
 
 | Tabla | Filas | Rol |
 |---|---|---|
@@ -42,26 +39,26 @@ Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: 6 fich
 | `DIM_Producto` | 59 | Catálogo de productos (formato ASL/ATA/ETO) |
 | `DIM_Fecha` | 182 | Calendario diario de la ventana real de venta, con indicador de festivo nacional (BOE) |
 
-El proceso completo (staging, resolución de duplicados, cálculo de columnas derivadas, materialización del esquema) está documentado en [`sql/`](sql/). El festivo es el único atributo que no puede fijarse en `DIM_Fecha`: al depender a la vez de la fecha y de la Comunidad Autónoma del outlet, el detalle autonómico se resuelve cruzando fecha × provincia a nivel de `FACT_Ventas`, mientras que `DIM_Fecha` conserva solo el indicador de festivo nacional.
+El proceso completo (staging, resolución de duplicados, cálculo de columnas derivadas, materialización del esquema) está documentado en [`SQL/`](SQL/). El festivo es el único atributo que no puede fijarse en `DIM_Fecha`: al depender a la vez de la fecha y de la Comunidad Autónoma del outlet, el detalle autonómico se resuelve cruzando fecha × provincia a nivel de `FACT_Ventas`, mientras que `DIM_Fecha` conserva solo el indicador de festivo nacional.
 
 ## Estructura del repositorio
 
 ```
 ├── docs/
 │   └── TFM_Memoria.pdf          # Memoria completa del TFM (78 págs.)
-├── data/
-│   ├── README.md                 # Diccionario de datos
-│   └── raw/                      # Datos operacionales de Altadis 2015 (anonimizados)
-├── sql/                          # Construcción del Data Warehouse en SQL Server
-├── notebooks/                    # Modelos de Python (clustering + predicción)
-├── dashboard/
+├── Excel - csv/                  # Datos operacionales de Altadis 2015 (anonimizados)
+├── SQL/                          # Construcción del Data Warehouse en SQL Server
+├── Python notebook/              # Modelos de Python (clustering + predicción)
+├── Power BI dashboard/
 │   └── TFM_PBI.pbix              # Cuadro de mando Power BI (4 páginas)
-└── assets/figures/                # Gráficos generados en el análisis
+└── Assets/                       # Gráficos y capturas generados en el análisis
+    ├── dashboard/                 # Capturas del dashboard Power BI
+    └── figures/                   # Gráficos del análisis y los modelos
 ```
 
 ## Ejemplos de SQL
 
-El proceso completo de construcción del Data Warehouse está documentado en [`sql/`](sql/); aquí unos fragmentos representativos del trabajo de modelado y limpieza.
+El proceso completo de construcción del Data Warehouse está documentado en [`SQL/`](SQL/); aquí unos fragmentos representativos del trabajo de modelado y limpieza.
 
 ### Enriquecimiento geográfico: código postal → provincia
 
@@ -89,7 +86,7 @@ LEFT JOIN provincias p ON a.CPRO = p.CPRO;
 
 ### Festivo nacional vs. autonómico
 
-Un mismo día puede ser festivo en una Comunidad Autónoma y laborable en otra, así que el indicador no podía fijarse como atributo de la fecha: se resolvió cruzando la fecha de venta, la provincia del outlet y su Comunidad Autónoma contra el calendario de festivos del BOE (ver [`sql/FechasFestivos.sql`](sql/FechasFestivos.sql)).
+Un mismo día puede ser festivo en una Comunidad Autónoma y laborable en otra, así que el indicador no podía fijarse como atributo de la fecha: se resolvió cruzando la fecha de venta, la provincia del outlet y su Comunidad Autónoma contra el calendario de festivos del BOE (ver [`SQL/FechasFestivos.sql`](SQL/FechasFestivos.sql)).
 
 ```sql
 -- Tabla auxiliar Provincia → CCAA (52 provincias)
@@ -131,33 +128,33 @@ WHERE rn = 1;
 
 ## Dashboard (Power BI)
 
-El cuadro de mando (`dashboard/TFM_PBI.pbix`) se organiza en 4 páginas con filtrado cruzado entre visualizaciones.
+El cuadro de mando (`Power BI dashboard/TFM_PBI.pbix`) se organiza en 4 páginas con filtrado cruzado entre visualizaciones.
 
 ### Resumen Ejecutivo
 
 KPIs de síntesis (2.147 mill. de unidades netas vendidas, 3.582 estancos con actividad, 51 productos con ventas, 148 registros de devolución, 0,08% de tasa de rotura de stock), mix de ventas por formato (ASL 65,76% / ETO 23,48% / ATA 10,76%) y ranking de ventas netas por provincia, con Madrid, Barcelona y Valencia/València muy por delante del resto.
 
-![Resumen Ejecutivo](assets/dashboard/resumen_ejecutivo.png)
+![Resumen Ejecutivo](Assets/dashboard/resumen_ejecutivo.png)
 
 ### Geografía y Renta
 
 Dispersión de ventas por estanco frente a renta provincial (sin relación positiva clara, confirmando que la renta no explica el consumo), ranking de provincias por volumen (Madrid 334.576, Barcelona 265.726, Valencia/València 179.939...), y ventas por tipo de ubicación y tamaño de local — los estancos de tipo "ANY" y "VILLAGE" y los locales pequeños (5-20m²) concentran el grueso de la venta.
 
-![Geografía y Renta](assets/dashboard/geografia_renta.png)
+![Geografía y Renta](Assets/dashboard/geografia_renta.png)
 
 ### Stock y Logística
 
 Tasa de rotura de stock global (0,08%) y media de entrega (1,08), desglosadas por formato (ATA > ASL > ETO, confirmando la sobrerrepresentación del premium) y por provincia (Segovia, La Rioja y Toledo a la cabeza). El panel "Efecto de la ruta" es el más contundente: los outlets con ruta de reparto planificada tienen muchísimos más registros con entrega que los que no la tienen.
 
-![Stock y Logística](assets/dashboard/stock_logistica.png)
+![Stock y Logística](Assets/dashboard/stock_logistica.png)
 
 ### Estacionalidad
 
 Venta media por registro (2,05), % de ventas en fin de semana (19,0%) y diferencia festivo vs. laborable (-1,3%, confirmando que la venta es ligeramente menor en festivo). El patrón semanal es claro: pico los lunes y viernes, y el domingo se desploma tanto en volumen de venta como en reposición (la entrega prácticamente no opera en fin de semana).
 
-![Estacionalidad](assets/dashboard/estacionalidad.png)
+![Estacionalidad](Assets/dashboard/estacionalidad.png)
 
-> El `.pbix` original también está disponible en [`dashboard/TFM_PBI.pbix`](dashboard/TFM_PBI.pbix) para explorarlo de forma interactiva con Power BI Desktop.
+> El `.pbix` original también está disponible en [`Power BI dashboard/TFM_PBI.pbix`](Power%20BI%20dashboard/TFM_PBI.pbix) para explorarlo de forma interactiva con Power BI Desktop.
 
 ## Analítica avanzada
 
@@ -166,8 +163,8 @@ Venta media por registro (2,05), % de ventas en fin de semana (19,0%) y diferenc
 K-means (k=5) sobre 2.952 outlets, tras excluir 5 outliers con una tasa de rotura de stock 55-93 veces superior a la media. El número de clusters se justificó con el método del codo y el coeficiente de silueta.
 
 <p float="left">
-  <img src="assets/figures/clustering_codo_silueta.png" width="49%" />
-  <img src="assets/figures/clustering_segmentos_dispersion.png" width="49%" />
+  <img src="Assets/figures/clustering_codo_silueta.png" width="49%" />
+  <img src="Assets/figures/clustering_segmentos_dispersion.png" width="49%" />
 </p>
 
 **Hallazgo principal:** el comportamiento de venta (volumen y diversidad de catálogo) segmenta la red con más claridad que variables puramente descriptivas como el tamaño del local o la renta provincial.
@@ -177,8 +174,8 @@ K-means (k=5) sobre 2.952 outlets, tras excluir 5 outliers con una tasa de rotur
 Clasificación binaria (Regresión Logística, Árbol de Decisión, XGBoost) sobre 950.217 registros, con un desequilibrio extremo de clase (0,08% de casos positivos) tratado mediante balanceo de clases.
 
 <p float="left">
-  <img src="assets/figures/importancia_variables_arbol.png" width="49%" />
-  <img src="assets/figures/comparacion_modelos_prediccion.png" width="49%" />
+  <img src="Assets/figures/importancia_variables_arbol.png" width="49%" />
+  <img src="Assets/figures/comparacion_modelos_prediccion.png" width="49%" />
 </p>
 
 **Hallazgo principal:** `Delivery_Unidades` concentra el 82% de la capacidad predictiva del árbol de decisión — la rotura de stock en la red de Altadis es, fundamentalmente, un fenómeno logístico (falta de reposición), no de demanda ni de calendario.
@@ -192,9 +189,9 @@ Clasificación binaria (Regresión Logística, Árbol de Decisión, XGBoost) sob
 - Patrón semanal robusto (pico lunes/viernes, mínimo domingo) y estacionalidad festiva contraintuitiva: la venta media es ligeramente *menor* en festivos que en laborables.
 
 <p float="left">
-  <img src="assets/figures/ventas_por_ubicacion.png" width="32%" />
-  <img src="assets/figures/concentracion_ventas_pareto.png" width="32%" />
-  <img src="assets/figures/rotura_stock_por_formato.png" width="32%" />
+  <img src="Assets/figures/ventas_por_ubicacion.png" width="32%" />
+  <img src="Assets/figures/concentracion_ventas_pareto.png" width="32%" />
+  <img src="Assets/figures/rotura_stock_por_formato.png" width="32%" />
 </p>
 
 ## Limitaciones (declaradas en la memoria)
@@ -214,4 +211,4 @@ Clasificación binaria (Regresión Logística, Árbol de Decisión, XGBoost) sob
 
 ## Memoria completa
 
-El documento [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
+El documento [`docs/TFM_Memoria.pdf`](docs/TFM_Memoria.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
