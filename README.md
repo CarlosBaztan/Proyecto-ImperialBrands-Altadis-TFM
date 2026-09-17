@@ -2,8 +2,8 @@
 
 **Business Intelligence y analítica predictiva aplicada a Altadis España (Imperial Brands Group)**
 
-Trabajo Fin de Máster — Máster Universitario en Business Intelligence y Analítica, UNIR.
-Proyecto desarrollado en colaboración con Altadis, S.A. — Imperial Brands Group | Red Proyectium.
+Trabajo Fin de Máster — Máster Universitario en Business Intelligence, UNIR.
+Proyecto desarrollado en colaboración con Altadis, S.A. — **Imperial Brands Group** | Red Proyectium.
 
 ![SQL Server](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat&logo=microsoftsqlserver&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
@@ -13,7 +13,7 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — Imperial Brands Gro
 
 ## Autoría
 
-Trabajo Fin de Máster (Business Intelligence), dirigido por Enrique Hortalá González. 
+Trabajo Fin de Máster, dirigido por Enrique Hortalá González. 
 Este repositorio recoge y documenta la parte técnica del proyecto | modelado de datos, SQL, notebooks de Python y dashboard de Power BI | como parte del portfolio personal de **Carlos Baztán Peiró**.
 
 ## Contexto
