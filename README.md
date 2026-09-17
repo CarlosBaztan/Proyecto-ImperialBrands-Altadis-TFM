@@ -11,6 +11,8 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — **Imperial Brands G
 ![XGBoost](https://img.shields.io/badge/XGBoost-006400?style=flat)
 ![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?style=flat&logo=powerbi&logoColor=black)
 
+Documento TFM: [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf)
+
 ## Autoría
 
 Trabajo Fin de Máster grupal (2 integrantes), dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte del portfolio personal de **Carlos Baztán Peiró**.
@@ -211,4 +213,4 @@ Clasificación binaria (Regresión Logística, Árbol de Decisión, XGBoost) sob
 
 ## Memoria completa
 
-El documento [`docs/TFM_Memoria.pdf`](docs/TFM_Memoria.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
+El documento [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf) recoge la metodología completa (CRISP-DM), la auditoría de calidad de datos, el diseño del Data Warehouse, el análisis exploratorio, los modelos predictivos y las conclusiones y recomendaciones para Altadis/Imperial Brands.
