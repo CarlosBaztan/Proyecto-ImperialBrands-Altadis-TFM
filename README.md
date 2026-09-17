@@ -67,10 +67,16 @@ El proceso completo de construcción del Data Warehouse está documentado en [`S
 Los estancos solo traían código postal. Los dos primeros dígitos coinciden con el CPRO (código de provincia) del INE, así que se cruzó contra el callejero de municipios del INE para obtener la provincia de cada outlet:
 
 ```sql
--- Los primeros 2 dígitos del POSTALCODE coinciden con el CPRO del INE
---   POSTALCODE = '28015' → CPRO = '28' → Madrid
---   POSTALCODE = '08940' → CPRO = '08' → Barcelona
+-- 1) Derivar el CPRO a partir del POSTALCODE: se normaliza a 5 dígitos
+--    (rellenando con ceros a la izquierda) y se toman los 2 primeros
+--    POSTALCODE = '28015' → CPRO = '28' → Madrid
+--    POSTALCODE = '08940' → CPRO = '08' → Barcelona
+ALTER TABLE AffiliatedOutlets ADD CPRO CHAR(2);
 
+UPDATE AffiliatedOutlets
+SET CPRO = LEFT(RIGHT('00000' + CAST(POSTALCODE AS VARCHAR(10)), 5), 2);
+
+-- 2) Cruzar el CPRO ya calculado contra el callejero del INE (CPRO → PROVINCIA)
 CREATE VIEW v_outlets_provincia AS
 SELECT
     a.Affiliated_Code,
