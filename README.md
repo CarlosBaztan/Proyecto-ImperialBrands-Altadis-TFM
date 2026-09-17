@@ -64,7 +64,7 @@ El proceso completo de construcción del Data Warehouse está documentado en [`S
 
 ### Enriquecimiento geográfico: código postal → provincia
 
-Los estancos solo traían código postal, sin provincia. Para obtenerla se usaron tablas externas del INE que me permitieron relacionar cada CPRO (código de provincia de 2 dígitos) con su PROVINCIA correspondiente. El proceso tiene dos pasos: primero se calcula el CPRO de cada estanco a partir de los 2 primeros dígitos de su POSTALCODE, y después se cruza ese CPRO con la tabla del INE para obtener el nombre de la PROVINCIA de cada outlet o establecimiento:
+Los estancos solo traían código postal, sin provincia. Para obtenerla se usaron tablas externas del INE que me permitieron relacionar cada `CPRO` (código de provincia de 2 dígitos) con su `PROVINCIA` correspondiente. El proceso tiene dos pasos: primero se calcula el `CPRO` de cada estanco a partir de los 2 primeros dígitos de su `POSTALCODE`, y después se cruza ese `CPRO` con la tabla del INE para obtener el nombre de la `PROVINCIA` de cada outlet o establecimiento:
 
 ```sql
 -- 1) Derivar el CPRO a partir del POSTALCODE: se normaliza a 5 dígitos
