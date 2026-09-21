@@ -33,7 +33,7 @@ El sector tabacalero español opera bajo presión regulatoria creciente, cambios
 Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: ficheros operacionales de Altadis (en [`Excel - csv/`](Excel%20-%20csv/)) enriquecidos con provincia y renta media neta por persona por provincia (INE, a partir del código postal) y calendario de festivos por CCAA (BOE), materializados en un esquema en estrella sobre SQL Server.
 
 <p align="center">
-  <img src="Assets/figures/esquema_estrella_dwh.png" alt="Esquema en estrella del Data Warehouse" width="600" />
+  <img src="Assets/figures/esquema_estrella_dwh1.png" alt="Esquema en estrella del Data Warehouse" width="700" />
 </p>
 
 ![Esquema en estrella del Data Warehouse](Assets/figures/esquema_estrella_dwh.png)
