@@ -13,7 +13,7 @@ Proyecto desarrollado en colaboración con Altadis, S.A. — **Imperial Brands G
 
 Documento TFM: [`TFM_Final_CarlosBaztánPeiró.pdf`](TFM_Final_CarlosBaztánPeiró.pdf)
 
-## Autoría
+## 👩‍💻 Autoría
 
 Trabajo Fin de Máster, dirigido por Enrique Hortalá González. Este repositorio recoge y documenta la parte técnica del proyecto — modelado de datos, SQL, notebooks de Python y dashboard de Power BI — como parte de mi portfolio personal, **Carlos Baztán Peiró**.
 
@@ -21,7 +21,7 @@ Trabajo Fin de Máster, dirigido por Enrique Hortalá González. Este repositori
 
 El sector tabacalero español opera bajo presión regulatoria creciente, cambios en los hábitos de consumo y una red de distribución compleja basada en estancos. Altadis puso a disposición del proyecto datos operacionales anonimizados de 2015 (ventas, entregas, roturas de stock y rutas de reparto) con el objetivo de transformar esa información dispersa en una base analítica única que soporte decisiones comerciales, logísticas y estratégicas.
 
-## Objetivos del proyecto
+## 🎯 Objetivos del proyecto
 
 1. Auditar la calidad, consistencia y fiabilidad de los datos operacionales disponibles.
 2. Diseñar e implementar un Data Warehouse (esquema en estrella) que integre los datos internos con fuentes externas (INE, BOE).
@@ -43,8 +43,7 @@ Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: ficher
 
 El proceso completo (staging, resolución de duplicados, cálculo de columnas derivadas, materialización del esquema) está documentado en [`SQL/`](SQL/). El festivo es el único atributo que no puede fijarse en `DIM_Fecha`: al depender a la vez de la fecha y de la Comunidad Autónoma del outlet, el detalle autonómico se resuelve cruzando fecha × provincia a nivel de `FACT_Ventas`, mientras que `DIM_Fecha` conserva solo el indicador de festivo nacional.
 
-## Estructura del repositorio
-
+## 📁 Estructura del repositorio
 ```
 ├── docs/
 │   └── TFM_Memoria.pdf          # Memoria completa del TFM (78 págs.)
