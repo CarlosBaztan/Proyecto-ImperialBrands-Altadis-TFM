@@ -24,7 +24,7 @@ El sector tabacalero español opera bajo presión regulatoria creciente, cambios
 ## 🎯 Objetivos del proyecto
 
 1. Auditar la calidad, consistencia y fiabilidad de los datos operacionales disponibles.
-2. Diseñar e implementar un Data Warehouse (esquema en estrella) que integre los datos internos con fuentes externas (INE, BOE).
+2. Diseñar e implementar un Data Warehouse (formato: esquema en estrella) que integre los datos internos con fuentes externas (INE, BOE).
 3. Construir un sistema de visualización e indicadores de negocio (dashboard Power BI).
 4. Aplicar analítica avanzada: segmentación de puntos de venta (clustering) y predicción de rotura de stock.
 
