@@ -36,7 +36,6 @@ Metodología CRISP-DM + modelado dimensional (Kimball). Punto de partida: ficher
   <img src="Assets/figures/esquema_estrella_dwh2.png" alt="Esquema en estrella del Data Warehouse" width="700" />
 </p>
 
-![Esquema en estrella del Data Warehouse](Assets/figures/esquema_estrella_dwh.png)
 
 | Tabla | Filas | Rol |
 |---|---|---|
